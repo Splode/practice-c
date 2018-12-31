@@ -7,8 +7,7 @@ struct Node {
   struct Node *next;
 };
 
-// TODO: implement list traversal
-//void printList(struct Node);
+void printList(struct Node *n);
 
 int main() {
   struct Node *head = NULL;
@@ -28,8 +27,14 @@ int main() {
   third->data = 3;
   third->next = NULL;
 
-  printf("Head: %d\n", head->data);
-  printf("Next: %d", head->next->data);
+  printList(head);
 
   return 0;
+}
+
+void printList(struct Node *n) {
+  while (n != NULL) {
+    printf("Data: %d\n", n->data);
+    n = n->next;
+  }
 }
