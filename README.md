@@ -6,7 +6,7 @@
 
 - [ ] Arrays
 - [ ] Singly Linked Lists
-  - [ ] Traversal
+  - [x] Traversal
   - [ ] Insertion
   - [ ] Removal
 - [ ] Circular Linked Lists
