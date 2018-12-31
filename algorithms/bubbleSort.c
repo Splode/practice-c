@@ -23,7 +23,7 @@ int *bubbleSort(int array[], int length) {
   // reduce initial length to keep iterator in bounds
   length--;
 
-  while(!isSorted) { 
+  while(!isSorted) {
     isSorted = 1;
     for (int i = 0; i < length; i++) {
       if (array[i] > array[i + 1]) {
