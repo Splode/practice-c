@@ -5,14 +5,26 @@
 ## Data Structures
 
 - [ ] Arrays
-- [ ] Linked Lists
+- [ ] Singly Linked Lists
+  - [ ] Traversal
+  - [ ] Insertion
+  - [ ] Removal
+- [ ] Circular Linked Lists
+- [ ] Doubly Linked Lists
 - [ ] Stacks
 - [ ] Queues
 - [ ] Graphs
 - [ ] Trees
 
-## Sorting
+## Algorithms
+
+### Sorting
 
 - [x] Bubble sort
 - [ ] Merge sort
 - [ ] Quick sort
+
+### Searching
+
+- [ ] Linear search
+- [ ] Binary search
