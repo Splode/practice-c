@@ -1,6 +1,6 @@
 # C Practice
 
-> This project is an ongoing documentation of efforts to enrich my understanding of CS concepts while learning C.
+> This project documents ongoing efforts to enrich my understanding of CS concepts while learning C.
 
 ## Data Structures
 
@@ -13,6 +13,6 @@
 
 ## Sorting
 
-- [ ] Bubble sort
+- [x] Bubble sort
 - [ ] Merge sort
 - [ ] Quick sort
