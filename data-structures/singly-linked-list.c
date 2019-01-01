@@ -7,6 +7,7 @@ struct Node {
   struct Node *next;
 };
 
+struct Node *allocateNode(void);
 void printList(struct Node *n);
 
 int main() {
@@ -14,9 +15,9 @@ int main() {
   struct Node *second = NULL;
   struct Node *third = NULL;
 
-  head = (struct Node*)malloc(sizeof(struct Node));
-  second = (struct Node*)malloc(sizeof(struct Node));
-  third = (struct Node*)malloc(sizeof(struct Node));
+  head = allocateNode();
+  second = allocateNode();
+  third = allocateNode();
   
   head->data = 1;
   head->next = second;
@@ -32,6 +33,21 @@ int main() {
   return 0;
 }
 
+// allocate memory for node struct
+struct Node *allocateNode(void) {
+  struct Node *n;
+
+  n = (struct Node *)malloc(sizeof(struct Node));
+  
+  if (n == NULL) {
+    perror("Unable to allocate structure");
+    exit(1);
+  }
+
+  return n;
+};
+
+// traverse and log list starting at head
 void printList(struct Node *n) {
   while (n != NULL) {
     printf("Data: %d\n", n->data);
