@@ -9,6 +9,7 @@ struct Node {
 
 struct Node *allocateNode(void);
 void printList(struct Node *n);
+void prependNode(struct Node *head, struct Node *n);
 
 int main() {
   struct Node *head = NULL;
@@ -28,7 +29,20 @@ int main() {
   third->data = 3;
   third->next = NULL;
 
+  // print initial list
+  printf("Initial List\n");
   printList(head);
+
+  // create new node to be prepended
+  struct Node *fourth = NULL;
+
+  fourth = allocateNode();
+  fourth->data = 4;
+
+  prependNode(head, fourth);
+  
+  printf("List with prepended node\n");
+  printList(fourth);
 
   return 0;
 }
@@ -54,3 +68,14 @@ void printList(struct Node *n) {
     n = n->next;
   }
 }
+
+// prepend node
+void prependNode(struct Node *head, struct Node *n) {
+  n->next = head;
+}
+
+// TODO: append node
+
+// TODO: insert node at location
+
+// TODO: remove node
