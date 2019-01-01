@@ -11,6 +11,7 @@ struct Node *allocateNode(void);
 void printList(struct Node *n);
 void prependNode(struct Node *head, struct Node *n);
 void appendNode(struct Node *listNode, struct Node *n);
+void insertNode(struct Node *listNode, struct Node *n);
 
 int main() {
   struct Node *head = NULL;
@@ -58,6 +59,18 @@ int main() {
   printf("List with appended node\n");
   printList(fourth);
 
+  // create new node to be inserted
+  struct Node *sixth = NULL;
+
+  sixth = allocateNode();
+  sixth->data = 6;
+
+  insertNode(second, sixth);
+
+  putchar('\n');
+  printf("List with inserted node\n");
+  printList(fourth);
+
   return 0;
 }
 
@@ -100,6 +113,11 @@ void appendNode(struct Node *listNode, struct Node *n) {
   listNode->next = n;
 }
 
-// TODO: insert node at location
+// TODO: insert node after given location
+void insertNode(struct Node *listNode, struct Node *n) {
+  // link new node to next node
+  n->next = listNode->next;
+  listNode->next = n;
+}
 
 // TODO: remove node
