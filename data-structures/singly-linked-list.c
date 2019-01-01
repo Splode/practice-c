@@ -12,18 +12,19 @@ void printList(struct Node *n);
 void prependNode(struct Node *head, struct Node *n);
 void appendNode(struct Node *listNode, struct Node *n);
 void insertNode(struct Node *listNode, struct Node *n);
+void removeNode(struct Node *head, struct Node *n);
 
 int main() {
-  struct Node *head = NULL;
+  struct Node *first = NULL;
   struct Node *second = NULL;
   struct Node *third = NULL;
 
-  head = allocateNode();
+  first = allocateNode();
   second = allocateNode();
   third = allocateNode();
   
-  head->data = 1;
-  head->next = second;
+  first->data = 1;
+  first->next = second;
 
   second->data = 2;
   second->next = third;
@@ -33,7 +34,7 @@ int main() {
 
   // print initial list
   printf("Initial List\n");
-  printList(head);
+  printList(first);
 
   // create new node to be prepended
   struct Node *fourth = NULL;
@@ -41,7 +42,7 @@ int main() {
   fourth = allocateNode();
   fourth->data = 4;
 
-  prependNode(head, fourth);
+  prependNode(first, fourth);
   
   putchar('\n');
   printf("List with prepended node\n");
@@ -69,6 +70,13 @@ int main() {
 
   putchar('\n');
   printf("List with inserted node\n");
+  printList(fourth);
+
+  // remove node
+  removeNode(fourth, second);
+  // removeNode(fourth, fifth);
+  putchar('\n');
+  printf("List with node removed\n");
   printList(fourth);
 
   return 0;
@@ -113,7 +121,7 @@ void appendNode(struct Node *listNode, struct Node *n) {
   listNode->next = n;
 }
 
-// TODO: insert node after given location
+// insert node after given location
 void insertNode(struct Node *listNode, struct Node *n) {
   // link new node to next node
   n->next = listNode->next;
@@ -121,3 +129,26 @@ void insertNode(struct Node *listNode, struct Node *n) {
 }
 
 // TODO: remove node
+void removeNode(struct Node *head, struct Node *n) {
+  // immediately remove head if given
+  if (head == n) {
+    free(head);
+    return;
+  }
+  
+  // TODO: remove tail if given
+  // set current node to head
+  struct Node *current = head;
+
+  // traverse list
+  while (current->next != NULL) {
+    // if given node is linked to current node, link current to node after
+    // given node
+    if (current->next == n) {
+      current->next = n->next;
+    }
+    current = current->next;
+  }
+  // free dynamically allocated memory of removed node
+  free(n);
+}
