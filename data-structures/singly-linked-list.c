@@ -93,6 +93,7 @@ int main() {
   return 0;
 }
 
+// TODO: use this function to generate a node using data input
 // allocate memory for node struct
 struct Node *allocateNode(void) {
   struct Node *n;
@@ -109,7 +110,7 @@ struct Node *allocateNode(void) {
 
 // traverse and log list starting at given node
 void printList(struct Node *n) {
-  while (n != NULL) {
+  while (n) {
     printf("Data: %d\n", n->data);
     n = n->next;
   }
@@ -125,7 +126,7 @@ void appendNode(struct Node *listNode, struct Node *n) {
   // immediately set new tail
   n->next = NULL;
   // traverse from given node until tail is found
-  while (listNode->next != NULL) {
+  while (listNode->next) {
     listNode = listNode->next;
   }
   // link previous tail to new tail
