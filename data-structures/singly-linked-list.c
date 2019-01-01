@@ -74,10 +74,21 @@ int main() {
 
   // remove node
   removeNode(fourth, second);
-  // removeNode(fourth, fifth);
   putchar('\n');
   printf("List with node removed\n");
   printList(fourth);
+
+  // remove tail
+  removeNode(fourth, fifth);
+  putchar('\n');
+  printf("List with tail removed\n");
+  printList(fourth);
+
+  // remove head
+  removeNode(fourth, fourth);
+  putchar('\n');
+  printf("List with head removed\n");
+  printList(first);
 
   return 0;
 }
@@ -128,7 +139,7 @@ void insertNode(struct Node *listNode, struct Node *n) {
   listNode->next = n;
 }
 
-// TODO: remove node
+// remove node
 void removeNode(struct Node *head, struct Node *n) {
   // immediately remove head if given
   if (head == n) {
@@ -136,19 +147,18 @@ void removeNode(struct Node *head, struct Node *n) {
     return;
   }
   
-  // TODO: remove tail if given
   // set current node to head
   struct Node *current = head;
 
   // traverse list
-  while (current->next != NULL) {
-    // if given node is linked to current node, link current to node after
-    // given node
-    if (current->next == n) {
+  while (current) {
+    if (current->next == n) {      
       current->next = n->next;
+      break;
     }
     current = current->next;
   }
+
   // free dynamically allocated memory of removed node
   free(n);
 }
