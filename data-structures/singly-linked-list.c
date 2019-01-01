@@ -10,6 +10,7 @@ struct Node {
 struct Node *allocateNode(void);
 void printList(struct Node *n);
 void prependNode(struct Node *head, struct Node *n);
+void appendNode(struct Node *listNode, struct Node *n);
 
 int main() {
   struct Node *head = NULL;
@@ -41,7 +42,20 @@ int main() {
 
   prependNode(head, fourth);
   
+  putchar('\n');
   printf("List with prepended node\n");
+  printList(fourth);
+
+  // create new node to be appended
+  struct Node *fifth = NULL;
+
+  fifth = allocateNode();
+  fifth->data = 5;
+
+  appendNode(fourth, fifth);
+
+  putchar('\n');
+  printf("List with appended node\n");
   printList(fourth);
 
   return 0;
@@ -61,7 +75,7 @@ struct Node *allocateNode(void) {
   return n;
 };
 
-// traverse and log list starting at head
+// traverse and log list starting at given node
 void printList(struct Node *n) {
   while (n != NULL) {
     printf("Data: %d\n", n->data);
@@ -69,12 +83,22 @@ void printList(struct Node *n) {
   }
 }
 
-// prepend node
+// prepend node given existing head and new node
 void prependNode(struct Node *head, struct Node *n) {
   n->next = head;
 }
 
-// TODO: append node
+// append node given an existing linked node and new node
+void appendNode(struct Node *listNode, struct Node *n) {
+  // immediately set new tail
+  n->next = NULL;
+  // traverse from given node until tail is found
+  while (listNode->next != NULL) {
+    listNode = listNode->next;
+  }
+  // link previous tail to new tail
+  listNode->next = n;
+}
 
 // TODO: insert node at location
 
