@@ -7,7 +7,7 @@ struct Node {
   struct Node *next;
 };
 
-struct Node *allocateNode(void);
+struct Node *createNode(int data);
 void printList(struct Node *n);
 void prependNode(struct Node *head, struct Node *n);
 void appendNode(struct Node *listNode, struct Node *n);
@@ -19,18 +19,14 @@ int main() {
   struct Node *second = NULL;
   struct Node *third = NULL;
 
-  first = allocateNode();
-  second = allocateNode();
-  third = allocateNode();
+  first = createNode(1);
+  second = createNode(2);
+  third = createNode(3);
   
-  first->data = 1;
-  first->next = second;
-
-  second->data = 2;
-  second->next = third;
-
-  third->data = 3;
-  third->next = NULL;
+  // create head
+  first->next = NULL;
+  appendNode(first, second);
+  appendNode(first, third);
 
   // print initial list
   printf("Initial List\n");
@@ -38,9 +34,7 @@ int main() {
 
   // create new node to be prepended
   struct Node *fourth = NULL;
-
-  fourth = allocateNode();
-  fourth->data = 4;
+  fourth = createNode(4);
 
   prependNode(first, fourth);
   
@@ -50,9 +44,7 @@ int main() {
 
   // create new node to be appended
   struct Node *fifth = NULL;
-
-  fifth = allocateNode();
-  fifth->data = 5;
+  fifth = createNode(5);
 
   appendNode(fourth, fifth);
 
@@ -62,9 +54,7 @@ int main() {
 
   // create new node to be inserted
   struct Node *sixth = NULL;
-
-  sixth = allocateNode();
-  sixth->data = 6;
+  sixth = createNode(6);
 
   insertNode(second, sixth);
 
@@ -93,10 +83,9 @@ int main() {
   return 0;
 }
 
-// TODO: use this function to generate a node using data input
 // allocate memory for node struct
-struct Node *allocateNode(void) {
-  struct Node *n;
+struct Node *createNode(int data) {
+  static struct Node *n;
 
   n = (struct Node *)malloc(sizeof(struct Node));
   
@@ -104,6 +93,8 @@ struct Node *allocateNode(void) {
     perror("Unable to allocate structure");
     exit(1);
   }
+
+  n->data = data;
 
   return n;
 };
@@ -140,7 +131,7 @@ void insertNode(struct Node *listNode, struct Node *n) {
   listNode->next = n;
 }
 
-// remove node
+// remove given node
 void removeNode(struct Node *head, struct Node *n) {
   // immediately remove head if given
   if (head == n) {
