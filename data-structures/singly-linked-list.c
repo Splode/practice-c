@@ -13,6 +13,7 @@ void prependNode(struct Node *head, struct Node *n);
 void appendNode(struct Node *listNode, struct Node *n);
 void insertNode(struct Node *listNode, struct Node *n);
 void removeNode(struct Node *head, struct Node *n);
+int getListLength(struct Node *head);
 
 int main() {
   struct Node *first = NULL;
@@ -79,6 +80,9 @@ int main() {
   putchar('\n');
   printf("List with head removed\n");
   printList(first);
+
+  int length = getListLength(first);
+  printf("List length: %d", length);
 
   return 0;
 }
@@ -153,4 +157,16 @@ void removeNode(struct Node *head, struct Node *n) {
 
   // free dynamically allocated memory of removed node
   free(n);
+}
+
+// get the number of items in a list given a head node
+int getListLength(struct Node *head) {
+  int count = 0;
+  struct Node *current = head;
+
+  while (current) {
+    current = current->next;
+    count++;
+  }
+  return count;
 }
