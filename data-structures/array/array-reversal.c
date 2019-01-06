@@ -24,8 +24,9 @@ void printArray(int arr[], int size) {
   }
 }
 
-// TODO: make this accept a void pointer
-void *reverseArray(int arr[], int size) {
+// TODO: determine if this will accept a void pointer,
+// so that a string can also be passed
+void *reverseArray(int *arr, int size) {
   int start = 0;
   int end = size - 1;
   while (start < end) {
