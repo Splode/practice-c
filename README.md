@@ -5,6 +5,7 @@
 ## Data Structures
 
 - [ ] Arrays
+  - [ ] Reversal
 - [x] Singly Linked Lists
   - [x] Traversal
   - [x] Insertion
