@@ -14,6 +14,12 @@
 - [ ] Circular Linked Lists
 - [ ] Doubly Linked Lists
 - [ ] Stacks
+  - [x] Push
+  - [x] Pop
+  - [x] Peek
+  - [x] Length
+  - [x] isEmpty
+  - [x] isFull
 - [ ] Queues
 - [ ] Graphs
 - [ ] Trees
