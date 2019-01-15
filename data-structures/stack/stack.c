@@ -23,10 +23,18 @@ int main() {
     printf("Top item of stack: %2d\n", peek(stack));
   }
 
+  // stack should not be empty and length should be 10
   printf("Stack is empty: %d\t", isEmpty(stack));
   printf("Stack length: %d\n", length(stack));
 
-  printf("Popping %d from the stack.\t", pop(stack));
+  // remove items from stack and print
+  for (size_t i = 0; i < CAPACITY; i++) {
+    printf("Popping %d from the stack.\n", pop(stack));
+  }
+
+  // stack should now be empty and length should be 0
+  printf("Stack is empty: %d\t", isEmpty(stack));
+  printf("Stack length: %d\n", length(stack));
 
   return 0;
 }
@@ -70,7 +78,7 @@ int length(struct Stack *stack) {
 }
 
 int isEmpty(struct Stack *stack) {
-  return stack->top == -1;
+  return stack->top <= 0;
 }
 
 int isFull(struct Stack *stack) {
