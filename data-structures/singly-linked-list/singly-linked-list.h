@@ -1,7 +1,8 @@
 #ifndef SINGLY_LINKED_LIST_H
 #define SINGLY_LINKED_LIST_H
 
-struct Node {
+struct Node
+{
   int data;
   struct Node *next;
 };

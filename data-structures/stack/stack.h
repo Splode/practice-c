@@ -1,7 +1,8 @@
 #ifndef STACK_H
 #define STACK_H
 
-struct Stack {
+struct Stack
+{
   int top;
   unsigned int capacity;
   int *arr;

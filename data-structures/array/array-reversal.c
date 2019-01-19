@@ -5,8 +5,9 @@
 
 #define SIZE 7
 
-int main() {
-  int numArray[SIZE] = { 1, 2, 3, 4, 5, 6, 7 };
+int main()
+{
+  int numArray[SIZE] = {1, 2, 3, 4, 5, 6, 7};
 
   printf("Original array\n");
   printArray(numArray, SIZE);
@@ -18,18 +19,22 @@ int main() {
   return 0;
 }
 
-void printArray(int arr[], int size) {
-  for(short i = 0; i < size; i++) {
+void printArray(int arr[], int size)
+{
+  for (short i = 0; i < size; i++)
+  {
     printf("[%d]:  %d\n", i, arr[i]);
   }
 }
 
 // TODO: determine if this will accept a void pointer,
 // so that a string can also be passed
-void *reverseArray(int *arr, int size) {
+void *reverseArray(int *arr, int size)
+{
   int start = 0;
   int end = size - 1;
-  while (start < end) {
+  while (start < end)
+  {
     int temp = arr[end];
     arr[end] = arr[start];
     arr[start] = temp;

@@ -7,16 +7,18 @@
 
 #define CAPACITY 10
 
-int main() {
+int main()
+{
   struct Stack *stack = createStack(10);
-  int items[10] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+  int items[10] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
 
   // initial stack is empty, with a lenght of 0
   printf("Stack is empty: %d\t", isEmpty(stack));
   printf("Stack length: %d\n", length(stack));
 
   // push items onto stack and print
-  for (size_t i = 0; i <= CAPACITY + 1; i++) {
+  for (size_t i = 0; i <= CAPACITY + 1; i++)
+  {
     push(stack, i);
     printf("Pushing %2d onto stack.\t", i);
     printf("Stack is full: %d\t", isFull(stack));
@@ -28,7 +30,8 @@ int main() {
   printf("Stack length: %d\n", length(stack));
 
   // remove items from stack and print
-  for (size_t i = 0; i < CAPACITY; i++) {
+  for (size_t i = 0; i < CAPACITY; i++)
+  {
     printf("Popping %d from the stack.\n", pop(stack));
   }
 
@@ -39,7 +42,8 @@ int main() {
   return 0;
 }
 
-struct Stack *createStack(unsigned int capacity) {
+struct Stack *createStack(unsigned int capacity)
+{
   struct Stack *stack;
   stack = (struct Stack *)malloc(sizeof(struct Stack));
   stack->capacity = capacity;
@@ -48,17 +52,21 @@ struct Stack *createStack(unsigned int capacity) {
   return stack;
 }
 
-void push(struct Stack *stack, int item) {
+void push(struct Stack *stack, int item)
+{
   // only push items onto stack if capacity has not been reached
-  if (!isFull(stack)) {
+  if (!isFull(stack))
+  {
     stack->top++;
     stack->arr[stack->top] = item;
   }
 }
 
-int pop(struct Stack *stack) {
+int pop(struct Stack *stack)
+{
   // guard against popping from empty stack
-  if (isEmpty(stack)) {
+  if (isEmpty(stack))
+  {
     return INT_MIN;
   }
   int item = peek(stack);
@@ -66,21 +74,26 @@ int pop(struct Stack *stack) {
   return item;
 }
 
-int peek(struct Stack *stack) {
+int peek(struct Stack *stack)
+{
   return stack->arr[stack->top];
 }
 
-int length(struct Stack *stack) {
-  if (isEmpty(stack)) {
+int length(struct Stack *stack)
+{
+  if (isEmpty(stack))
+  {
     return 0;
   }
   return stack->top;
 }
 
-int isEmpty(struct Stack *stack) {
+int isEmpty(struct Stack *stack)
+{
   return stack->top <= 0;
 }
 
-int isFull(struct Stack *stack) {
+int isFull(struct Stack *stack)
+{
   return stack->top == stack->capacity;
 }

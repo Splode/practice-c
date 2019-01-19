@@ -4,7 +4,8 @@
 
 #include "singly-linked-list.h"
 
-int main() {
+int main()
+{
   struct Node *first = NULL;
   struct Node *second = NULL;
   struct Node *third = NULL;
@@ -12,7 +13,7 @@ int main() {
   first = createNode(1);
   second = createNode(2);
   third = createNode(3);
-  
+
   // create head
   first->next = NULL;
   appendNode(first, second);
@@ -27,7 +28,7 @@ int main() {
   fourth = createNode(4);
 
   prependNode(first, fourth);
-  
+
   putchar('\n');
   printf("List with prepended node\n");
   printList(fourth);
@@ -77,12 +78,14 @@ int main() {
 }
 
 // allocate memory for node struct
-struct Node *createNode(int data) {
+struct Node *createNode(int data)
+{
   static struct Node *n;
 
   n = (struct Node *)malloc(sizeof(struct Node));
-  
-  if (n == NULL) {
+
+  if (n == NULL)
+  {
     perror("Unable to allocate structure");
     exit(1);
   }
@@ -93,24 +96,29 @@ struct Node *createNode(int data) {
 };
 
 // traverse and log list starting at given node
-void printList(struct Node *n) {
-  while (n) {
+void printList(struct Node *n)
+{
+  while (n)
+  {
     printf("Data: %d\n", n->data);
     n = n->next;
   }
 }
 
 // prepend node given existing head and new node
-void prependNode(struct Node *head, struct Node *n) {
+void prependNode(struct Node *head, struct Node *n)
+{
   n->next = head;
 }
 
 // append node given an existing linked node and new node
-void appendNode(struct Node *listNode, struct Node *n) {
+void appendNode(struct Node *listNode, struct Node *n)
+{
   // immediately set new tail
   n->next = NULL;
   // traverse from given node until tail is found
-  while (listNode->next) {
+  while (listNode->next)
+  {
     listNode = listNode->next;
   }
   // link previous tail to new tail
@@ -118,26 +126,31 @@ void appendNode(struct Node *listNode, struct Node *n) {
 }
 
 // insert node after given location
-void insertNode(struct Node *listNode, struct Node *n) {
+void insertNode(struct Node *listNode, struct Node *n)
+{
   // link new node to next node
   n->next = listNode->next;
   listNode->next = n;
 }
 
 // remove given node
-void removeNode(struct Node *head, struct Node *n) {
+void removeNode(struct Node *head, struct Node *n)
+{
   // immediately remove head if given
-  if (head == n) {
+  if (head == n)
+  {
     free(head);
     return;
   }
-  
+
   // set current node to head
   struct Node *current = head;
 
   // traverse list
-  while (current) {
-    if (current->next == n) {      
+  while (current)
+  {
+    if (current->next == n)
+    {
       current->next = n->next;
       break;
     }
@@ -149,11 +162,13 @@ void removeNode(struct Node *head, struct Node *n) {
 }
 
 // get the number of items in a list given a head node
-int getListLength(struct Node *head) {
+int getListLength(struct Node *head)
+{
   int count = 0;
   struct Node *current = head;
 
-  while (current) {
+  while (current)
+  {
     current = current->next;
     count++;
   }
