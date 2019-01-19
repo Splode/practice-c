@@ -18,14 +18,15 @@
   - [x] Pop
   - [x] Peek
   - [x] Length
-  - [x] isEmpty
   - [x] isFull
-- [ ] Queues
-  - [ ] Enqueue
-  - [ ] Dequeue
-  - [ ] Peek
-  - [ ] Length
-  - [ ] isEmpty
+  - [x] isEmpty
+- [x] Queues
+  - [x] Enqueue
+  - [x] Dequeue
+  - [x] Front/Rear
+  - [x] Length
+  - [x] isFull
+  - [x] isEmpty
 - [ ] Graphs
 - [ ] Trees
 
