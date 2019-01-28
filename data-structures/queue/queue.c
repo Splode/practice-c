@@ -18,7 +18,7 @@ int main()
   for (size_t i = 0; i < CAPACITY; i++)
   {
     enqueue(queue, i + 1);
-    printf("%2d  =>  ", i + 1);
+    printf("%2zd  =>  ", i + 1);
     print(queue);
     putchar('\n');
   }
